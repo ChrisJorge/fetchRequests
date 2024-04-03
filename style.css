@@ -1,4 +1,4 @@
-.btnContainer{
+/* .btnContainer{
     display: flex;
     justify-content: center;
 }
@@ -11,4 +11,22 @@
 .cat{
     width: 200px;
     height: 200px;
+} */
+
+.masterContainer{
+    display: flex;
+    border: solid black;
+    height: 90vh;
 }
+
+.imageContainer{
+    border: solid purple;
+    width: 80%;
+}
+
+.optionsContainer{
+    width: 20%;
+    border: solid blue;
+}
+
+
