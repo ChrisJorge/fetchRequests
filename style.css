@@ -1,0 +1,14 @@
+.btnContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.imgContainer{
+    height: 200px;
+    border: solid black;
+}
+
+#cat{
+    width: 200px;
+    height: 200px;
+}
