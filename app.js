@@ -82,7 +82,7 @@ const option = (num, breed) => {
             generateImages(num,breed,catAPI,catKey)
             break;
         case 'dog':
-            getDogBreeds();
+            generateImages(num,breed,dogAPI,dogKey)
             break;
     }
 }
