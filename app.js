@@ -1,5 +1,6 @@
 let choice = ''
-let key = 'https://api.thecatapi.com/v1/images/search?api_key=live_EVIFKqr3kKyNyRunYe4OKiDD8BrFaHdU1KgTRuPBJNIYyr0ktGjz69IQ8dHARLr0'
+let catKey = 'live_EVIFKqr3kKyNyRunYe4OKiDD8BrFaHdU1KgTRuPBJNIYyr0ktGjz69IQ8dHARLr0'
+let dogKey = 'live_miWXmUoqhhniToejnnhsfn36mc1V8l9ceiqWpOj74WOjJ8e9Bug0OI7JZIBFN5nU'
 document.querySelector('#cat').addEventListener('click', (event) => {
     choice = (event.target.attributes[1].value);
     getBreeds(choice)
@@ -17,17 +18,29 @@ const getBreeds = (choice) => {
             getCatBreeds();
             break;
         case 'dog':
-            console.log('Getting dog breeds')
+            getDogBreeds();
             break;
     }
 }
 
 const getCatBreeds = async () => {
-    let container = document.querySelector('select');
-    let response = await fetch(` https://api.thecatapi.com/v1/breeds`)
+    let response = await fetch(`https://api.thecatapi.com/v1/breeds`)
     let data = await response.json();
     removeBreeds()
-        for(let i = 0; i <  data.length; i++)
+    populateBreeds(data)
+}
+
+const getDogBreeds = async () => {
+    let response = await fetch('https://api.thedogapi.com/v1/breeds')
+    let data = await response.json();
+    removeBreeds()
+    populateBreeds(data)
+    
+}
+
+let populateBreeds = (data) => {
+    let container = document.querySelector('select');
+    for(let i = 0; i < data.length; i++)
         {
             let option = document.createElement('option');
             option.setAttribute('class', 'breed')
@@ -36,7 +49,6 @@ const getCatBreeds = async () => {
             container.appendChild(option)
         }
 }
-
 const removeBreeds = () => {
     let deleteArray = [];
     for(let i = 0; i < document.querySelectorAll('.breed').length; i++)
