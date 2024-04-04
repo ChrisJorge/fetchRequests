@@ -1,3 +1,14 @@
+// for(i = 0; i < document.querySelectorAll('input').length; i++)
+// {
+//     let input = document.querySelectorAll('input')[i]
+//     input.addEventListener('keydown',(press) => {
+//         this.press = press;
+//         console.log(`${press.key}`)
+        
+//     })
+// }
+
+
 // async function getCat(){
 
 //     let container = document.querySelector('.imgContainer')

@@ -1,17 +1,7 @@
-/* .btnContainer{
-    display: flex;
-    justify-content: center;
-}
-
-.imgContainer{
-    height: 200px;
-    border: solid black;
-}
-
 .cat{
     width: 200px;
     height: 200px;
-} */
+} 
 
 .masterContainer{
     display: flex;
@@ -25,8 +15,30 @@
 }
 
 .optionsContainer{
-    width: 20%;
+    width: 30%;
     border: solid blue;
 }
 
+.option{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
 
+input{
+    margin-left: 10px;
+}
+
+.btnContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.radioOption{
+    display: flex;
+    justify-content: center;
+    height: 25px;
+    margin-top: 15px;
+
+    align-items: center;
+}
