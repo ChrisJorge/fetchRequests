@@ -1,5 +1,7 @@
 let choice = ''
 let catKey = 'live_EVIFKqr3kKyNyRunYe4OKiDD8BrFaHdU1KgTRuPBJNIYyr0ktGjz69IQ8dHARLr0'
+catAPI = 'api.thecatapi.com'
+dogAPI = 'api.thedogapi.com'
 let dogKey = 'live_miWXmUoqhhniToejnnhsfn36mc1V8l9ceiqWpOj74WOjJ8e9Bug0OI7JZIBFN5nU'
 document.querySelector('#cat').addEventListener('click', (event) => {
     choice = (event.target.attributes[1].value);
@@ -69,10 +71,41 @@ document.querySelector('.generate').addEventListener('click', () => {
     let num = input.value;
     input.value = ''
     let breed = document.querySelector('#breed').value
-
+    option(num,breed)
 
 })
 
+const option = (num, breed) => {
+    switch (choice)
+    {
+        case 'cat':
+            generateImages(num,breed,catAPI,catKey)
+            break;
+        case 'dog':
+            getDogBreeds();
+            break;
+    }
+}
+
+const generateImages = async (num,breed,API,Key) => {
+    let response =  await fetch(`https://${API}/v1/images/search?breed_ids=${breed}&limit=${num}&api_ley=${Key}`);
+    let data = await response.json()
+    console.log(data)
+    let container = document.querySelector('.imageContainer')
+    let urls = []
+    for(let i = 0; i < data.length; i++)
+    {
+        urls.push(data[i].url)
+    }
+    for(let i = 0; i < urls.length; i++)
+    {
+        let image = document.createElement('img')
+        image.setAttribute('class','animal')
+        image.setAttribute('src', urls[i])
+        container.appendChild(image)
+    }
+
+}
 // async function getCat(){
 
 //     let container = document.querySelector('.imgContainer')
