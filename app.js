@@ -1,14 +1,40 @@
-// for(i = 0; i < document.querySelectorAll('input').length; i++)
-// {
-//     let input = document.querySelectorAll('input')[i]
-//     input.addEventListener('keydown',(press) => {
-//         this.press = press;
-//         console.log(`${press.key}`)
-        
-//     })
-// }
+let choice = ''
+let key = 'https://api.thecatapi.com/v1/images/search?api_key=live_EVIFKqr3kKyNyRunYe4OKiDD8BrFaHdU1KgTRuPBJNIYyr0ktGjz69IQ8dHARLr0'
+document.querySelector('#cat').addEventListener('click', (event) => {
+    choice = (event.target.attributes[1].value);
+    getBreeds(choice)
+})
+document.querySelector('#dog').addEventListener('click', (event) => {
+    choice = (event.target.attributes[1].value)
+    getBreeds(choice)
+})
 
 
+const getBreeds = (choice) => {
+    switch (choice)
+    {
+        case 'cat':
+            console.log('Getting cat breeds');
+            getCatBreeds();
+            break;
+        case 'dog':
+            console.log('Getting dog breeds')
+            break;
+    }
+}
+
+const getCatBreeds = async () => {
+    let container = document.querySelector('select');
+    let response = await fetch(` https://api.thecatapi.com/v1/breeds`)
+    let data = await response.json();
+        for(let i = 0; i <  data.length; i++)
+        {
+            let option = document.createElement('option');
+            option.value = data[i].id;
+            option.text = data[i].name;
+            container.appendChild(option)
+        }
+}
 // async function getCat(){
 
 //     let container = document.querySelector('.imgContainer')
