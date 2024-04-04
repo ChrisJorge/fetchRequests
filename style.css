@@ -10,13 +10,15 @@
 }
 
 .imageContainer{
-    border: solid purple;
+    border: solid black;
     width: 80%;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .optionsContainer{
+    border: solid black;
     width: 30%;
-    border: solid blue;
 }
 
 .option{

@@ -13,27 +13,27 @@
             <div class="imageContainer">
 
             </div>
-            <div class="optionsContainer">
-                <div class="radioOption">
-                    <input type ='radio' id="cat" value="Cat" name="PictureChoice">
-                    <label for="cat">Cat</label>
-                    <input type ='radio' id="dog" value="Dog" name="PictureChoice">
-                    <label for="cat">Dog</label>
+                <div class="optionsContainer">
+                    <div class="radioOption">
+                        <input type ='radio' id="cat" value="Cat" name="PictureChoice">
+                        <label for="cat">Cat</label>
+                        <input type ='radio' id="dog" value="Dog" name="PictureChoice">
+                        <label for="cat">Dog</label>
+                    </div>
+                    <div class="option">
+                        <p>Number of Images</p>
+                        <input placeholder="Enter A number" class="numImages">
+                    </div>
+                    <div class = "option">
+                        <p>Select a breed</p>
+                        <select name ='breed' id = 'breed'>
+                            <option value="default">Any</option>
+                        </select>
+                    </div>
+                    <div class="btnContainer">
+                        <button onclick="getCat()">Generate</button>
+                    </div>
                 </div>
-                <div class="option">
-                    <p>Number of Images</p>
-                    <input placeholder="Enter A number" class="numImages">
-                </div>
-                <div class = "option">
-                    <p>Select a breed</p>
-                    <select name ='breed' id = 'breed'>
-                        <option value="default">Any</option>
-                    </select>
-                </div>
-                <div class="btnContainer">
-                    <button onclick="getCat()">Generate</button>
-                </div>
-            </div>
         </div>
         <!-- <div class = 'btnContainer'>
             <button onclick="getCat()">Click To Generate Cat Image</button>
