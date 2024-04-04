@@ -88,6 +88,7 @@ const option = (num, breed) => {
 }
 
 const generateImages = async (num,breed,API,Key) => {
+    removeImages()
     let response =  await fetch(`https://${API}/v1/images/search?breed_ids=${breed}&limit=${num}&api_ley=${Key}`);
     let data = await response.json()
     console.log(data)
@@ -105,6 +106,18 @@ const generateImages = async (num,breed,API,Key) => {
         container.appendChild(image)
     }
 
+}
+
+const removeImages = () => {
+    let deleteArray = []
+    for(let i = 0; i < document.querySelectorAll('.animal').length; i++)
+    {
+        deleteArray.push(document.querySelectorAll('.animal')[i])
+    }
+    for(let i = 0; i < deleteArray.length; i ++)
+    {
+        deleteArray[i].remove()
+    }
 }
 // async function getCat(){
 
