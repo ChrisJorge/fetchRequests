@@ -14,7 +14,6 @@ const getBreeds = (choice) => {
     switch (choice)
     {
         case 'cat':
-            console.log('Getting cat breeds');
             getCatBreeds();
             break;
         case 'dog':
@@ -27,14 +26,31 @@ const getCatBreeds = async () => {
     let container = document.querySelector('select');
     let response = await fetch(` https://api.thecatapi.com/v1/breeds`)
     let data = await response.json();
+    removeBreeds()
         for(let i = 0; i <  data.length; i++)
         {
             let option = document.createElement('option');
+            option.setAttribute('class', 'breed')
             option.value = data[i].id;
             option.text = data[i].name;
             container.appendChild(option)
         }
 }
+
+const removeBreeds = () => {
+    let deleteArray = [];
+    for(let i = 0; i < document.querySelectorAll('.breed').length; i++)
+    {
+        let option = document.querySelectorAll('.breed')[i]
+        deleteArray.push(option)
+    }
+
+    for(let i = 0; i < deleteArray.length; i++)
+    {
+        deleteArray[i].remove()
+    }
+}
+
 // async function getCat(){
 
 //     let container = document.querySelector('.imgContainer')
