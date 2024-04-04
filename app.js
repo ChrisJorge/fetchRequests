@@ -63,6 +63,16 @@ const removeBreeds = () => {
     }
 }
 
+
+document.querySelector('.generate').addEventListener('click', () => {
+    let input = document.querySelectorAll('input')[2]
+    let num = input.value;
+    input.value = ''
+    let breed = document.querySelector('#breed').value
+
+
+})
+
 // async function getCat(){
 
 //     let container = document.querySelector('.imgContainer')
