@@ -30,7 +30,6 @@ export const generateImages = (num,breed,API,Key) => {
     removeImages()
     if(breed === 'default')
     {
-        console.log('working')
         fetch(`https://${API}/v1/images/search?limit=${num}&api_ley=${Key}`)
         .then((response) => response.json())
     .then((data) => {
