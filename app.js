@@ -98,7 +98,7 @@ const generateImages = async (num,breed,API,Key) => {
     {
         urls.push(data[i].url)
     }
-    for(let i = 0; i < urls.length; i++)
+    for(let i = 0; i < urls.length && i < count; i++)
     {
         let image = document.createElement('img')
         image.setAttribute('class','animal')
