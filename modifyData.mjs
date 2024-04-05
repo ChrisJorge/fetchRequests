@@ -34,7 +34,11 @@ export const generateImages = (num,breed,API,Key) => {
         console.log(data.length)
         if(data.length < num)
         {
+            sendMessage(`Number of images specified : ${num} is greated than number of images available for selected breed ${data.length}. Displaying all images for selected breed. `, 1)
             num = data.length;
+        }
+        else{
+            sendMessage('Displaying Images', 2)
         }
         let container = document.querySelector('.imageContainer')
         let i = 0;
@@ -63,8 +67,17 @@ const removeImages = () => {
     }
 }
 
-export const sendMessage = (str) => {
+export const sendMessage = (str, code) => {
     let announcement = document.querySelector('.announcementText');
+    switch (code)
+    {
+        case 1:
+            announcement.style.color = 'red';
+            break;
+        case 2: 
+            announcement.style.color = 'green';
+            break;
+    }
     announcement.innerHTML = str
     
 }

@@ -59,12 +59,12 @@ const inputCheck = (input) => {
         
         if(isNaN(input[i]))
         {
-            sendMessage('Please enter a number')
+            sendMessage('Please enter a number', 1)
             return false;
         }
         else if(input[i] === ' ')
         {
-            sendMessage('Please enter a number without any spaces')
+            sendMessage('Please enter a number without any spaces', 1)
             return false;
         }
         else{
