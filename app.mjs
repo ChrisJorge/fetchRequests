@@ -71,6 +71,6 @@ const inputCheck = (input) => {
         }
     }
     return true;
-    // console.log(validatedNum)
+   
 }
 

@@ -34,7 +34,7 @@ export const generateImages = (num,breed,API,Key) => {
         console.log(data.length)
         if(data.length < num)
         {
-            sendMessage(`Number of images specified : ${num} is greated than number of images available for selected breed ${data.length}. Displaying all images for selected breed. `, 1)
+            sendMessage(`Number of images specified: ${num} is greated than number of images available for selected breed: ${data.length}. Displaying all images for selected breed. `, 1)
             num = data.length;
         }
         else{

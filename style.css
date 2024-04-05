@@ -5,12 +5,9 @@
 
 .masterContainer{
     display: flex;
-    border: solid black;
-    height: 90vh;
 }
 
 .imageContainer{
-    border: solid black;
     width: 80%;
     display: flex;
     flex-wrap: wrap;
