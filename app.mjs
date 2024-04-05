@@ -1,5 +1,5 @@
 import { getCatBreeds, getDogBreeds } from "./getData.mjs";
-import { generateImages } from "./modifyData.mjs";
+import { generateImages, sendMessage } from "./modifyData.mjs";
 let choice = ''
 let catKey = 'live_EVIFKqr3kKyNyRunYe4OKiDD8BrFaHdU1KgTRuPBJNIYyr0ktGjz69IQ8dHARLr0'
 let catAPI = 'api.thecatapi.com'
@@ -32,13 +32,11 @@ const getBreeds = (choice) => {
 document.querySelector('.generate').addEventListener('click', () => {
     let input = document.querySelectorAll('input')[2]
     let num = input.value;
-    if(num === '' || isNaN(num))
+    if(inputCheck(num))
     {
-        console.log('No number entered')
-        input.value = ''
+        let breed = document.querySelector('#breed').value
+        option(num,breed)
     }
-    let breed = document.querySelector('#breed').value
-    option(num,breed)
 
 })
 
@@ -53,3 +51,26 @@ const option = (num, breed) => {
             break;
     }
 }
+
+const inputCheck = (input) => {
+
+    for(let i = 0; i < input.length; i++)
+    {
+        
+        if(isNaN(input[i]))
+        {
+            sendMessage('Please enter a number')
+            return false;
+        }
+        else if(input[i] === ' ')
+        {
+            sendMessage('Please enter a number without any spaces')
+            return false;
+        }
+        else{
+        }
+    }
+    return true;
+    // console.log(validatedNum)
+}
+

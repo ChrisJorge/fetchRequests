@@ -62,3 +62,9 @@ const removeImages = () => {
         deleteArray[i].remove()
     }
 }
+
+export const sendMessage = (str) => {
+    let announcement = document.querySelector('.announcementText');
+    announcement.innerHTML = str
+    
+}

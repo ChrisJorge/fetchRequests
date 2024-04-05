@@ -49,3 +49,13 @@ p{
     width: 200px;
     height: 200px;
 }
+
+.announcement{
+    display: flex;
+    justify-content: center;
+}
+
+.announcementText{
+    color: red;
+    font-size: 20px;
+}
