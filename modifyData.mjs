@@ -28,8 +28,11 @@ export const removeBreeds = () => {
 
 export const generateImages = (num,breed,API,Key) => {
     removeImages()
-    fetch(`https://${API}/v1/images/search?breed_ids=${breed}&limit=${num}&api_ley=${Key}`)
-    .then((response) => response.json())
+    if(breed === 'default')
+    {
+        console.log('working')
+        fetch(`https://${API}/v1/images/search?limit=${num}&api_ley=${Key}`)
+        .then((response) => response.json())
     .then((data) => {
         console.log(data.length)
         if(data.length < num)
@@ -52,6 +55,34 @@ export const generateImages = (num,breed,API,Key) => {
             i++
         }
     })
+    } 
+    else 
+    {
+        fetch(`https://${API}/v1/images/search?breed_ids=${breed}&limit=${num}&api_ley=${Key}`)
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data.length)
+            if(data.length < num)
+            {
+                sendMessage(`Number of images specified: ${num} is greated than number of images available for selected breed: ${data.length}. Displaying all images for selected breed. `, 1)
+                num = data.length;
+            }
+            else{
+                sendMessage('Displaying Images', 2)
+            }
+            let container = document.querySelector('.imageContainer')
+            let i = 0;
+            while(i < num)
+            {
+                console.log(data[i])
+                let image = document.createElement('img')
+                image.setAttribute('class','animal')
+                image.setAttribute('src', data[i].url)
+                container.appendChild(image)
+                i++
+            }
+        })
+    }
 }
 
 
@@ -78,6 +109,5 @@ export const sendMessage = (str, code) => {
             announcement.style.color = 'green';
             break;
     }
-    announcement.innerHTML = str
-    
+    announcement.innerHTML = str 
 }
