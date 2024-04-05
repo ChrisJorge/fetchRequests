@@ -87,25 +87,50 @@ const option = (num, breed) => {
     }
 }
 
-const generateImages = async (num,breed,API,Key) => {
-    removeImages()
-    let response =  await fetch(`https://${API}/v1/images/search?breed_ids=${breed}&limit=${num}&api_ley=${Key}`);
-    let data = await response.json()
-    console.log(data)
-    let container = document.querySelector('.imageContainer')
-    let urls = []
-    for(let i = 0; i < data.length; i++)
-    {
-        urls.push(data[i].url)
-    }
-    for(let i = 0; i < urls.length; i++)
-    {
-        let image = document.createElement('img')
-        image.setAttribute('class','animal')
-        image.setAttribute('src', urls[i])
-        container.appendChild(image)
-    }
+// const generateImages = async (num,breed,API,Key) => {
+//     removeImages()
+//     let response =  await fetch(`https://${API}/v1/images/search?breed_ids=${breed}&limit=${num}&api_ley=${Key}`)
+    
+//     let data = await response.json()
+//     console.log(data)
+//     let container = document.querySelector('.imageContainer')
+//     let urls = []
+//     for(let i = 0; i < num && i < data.length; i++)
+//     {
+//         urls.push(data[i].url)
+//     }
+//     for(let i = 0; i < urls.length; i++)
+//     {
+//         let image = document.createElement('img')
+//         image.setAttribute('class','animal')
+//         image.setAttribute('src', urls[i])
+//         container.appendChild(image)
+//     }
 
+// }
+
+const generateImages = (num,breed,API,Key) => {
+    removeImages()
+    fetch(`https://${API}/v1/images/search?breed_ids=${breed}&limit=${num}&api_ley=${Key}`)
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data.length)
+        if(data.length < num)
+        {
+            num = data.length;
+        }
+        let container = document.querySelector('.imageContainer')
+        let i = 0;
+        while(i < num)
+        {
+            console.log(data[i])
+            let image = document.createElement('img')
+            image.setAttribute('class','animal')
+            image.setAttribute('src', data[i].url)
+            container.appendChild(image)
+            i++
+        }
+    })
 }
 
 const removeImages = () => {
